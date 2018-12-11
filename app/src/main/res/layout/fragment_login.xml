@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="483dp"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="197dp"
+                android:src="@drawable/nyancat"
+                tools:layout_editor_absoluteX="49dp"
+                tools:layout_editor_absoluteY="42dp" />
+
+            <EditText
+                android:id="@+id/login_userid"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:drawableLeft="@drawable/ic_action_name"
+                android:ems="10"
+                android:hint="User Id"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="51dp"
+                tools:layout_editor_absoluteY="291dp" />
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:drawableLeft="@drawable/ic_password"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                tools:layout_editor_absoluteX="51dp"
+                tools:layout_editor_absoluteY="350dp" />
+
+
+            <Button
+                android:id="@+id/login_login"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="Login"
+                tools:layout_editor_absoluteX="53dp"
+                tools:layout_editor_absoluteY="409dp" />
+
+            <TextView
+                android:id="@+id/login_register"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:gravity="right"
+                android:clickable="true"
+                android:onClick="register"
+                android:text="Register New Account"
+                tools:layout_editor_absoluteX="52dp"
+                tools:layout_editor_absoluteY="477dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
