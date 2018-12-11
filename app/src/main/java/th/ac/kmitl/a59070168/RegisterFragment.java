@@ -8,7 +8,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterFragment extends Fragment {
 
@@ -22,7 +24,17 @@ public class RegisterFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        setRegisButton();
+    }
 
+    void setRegisButton() {
+        Button register = getActivity().findViewById(R.id.register_regisbtn);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validateRegis();
+            }
+        });
     }
 
     void validateRegis() {
@@ -43,6 +55,8 @@ public class RegisterFragment extends Fragment {
 
             DBHelper dbHelper = new DBHelper(getActivity());
             dbHelper.addUser(userIdStr, nameStr, String.valueOf(age), passwordStr);
+
+            Toast.makeText(getActivity(), "complete", Toast.LENGTH_SHORT).show();
         }
 
     }

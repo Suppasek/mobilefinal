@@ -44,13 +44,22 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
     }
 
-    public boolean valueExist(String value) {
-        String query = "Select * From user where userId = '"+value+"'";
+    public boolean valueExist(String userId, String password) {
+        sqLiteDatabase = this.getWritableDatabase();
+
+        String query = "Select * From user where userId = '"+userId+"' and password = '"+password+"'";
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
         if(cursor.getCount() != 0){
             return true;
         }else {
             return false;
         }
+    }
+
+    public String getName(String userId) {
+        Cursor cursor = sqLiteDatabase.rawQuery("select name from user where userId = '" + userId + "'", null);
+        cursor.moveToFirst();
+
+        return cursor.getString(0);
     }
 }

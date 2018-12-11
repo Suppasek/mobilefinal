@@ -67,15 +67,22 @@ public class LoginFragment extends Fragment {
         EditText password = getActivity().findViewById(R.id.login_password);
 
         String userIdStr = userId.getText().toString();
+        String passwordStr = password.getText().toString();
 
         if(userId.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
             Toast.makeText(getActivity(), "Please fill out this form", Toast.LENGTH_SHORT).show();
         }
-        else if (dbHelper.valueExist(userIdStr)) {
-            SharedPreferences.Editor editor = shared.edit();
-            editor.putString("userId", userIdStr);
+        else {
+            if (dbHelper.valueExist(userIdStr, passwordStr)) {
+                SharedPreferences.Editor editor = shared.edit();
+                editor.putString("userId", userIdStr);
+                editor.putString("name", dbHelper.getName(userIdStr));
 
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view,new HomeFragment()).addToBackStack(null).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_view, new HomeFragment()).addToBackStack(null).commit();
+            }
+            else {
+                Toast.makeText(getActivity(), "Invalid User or Password", Toast.LENGTH_SHORT).show();
+            }
         }
 
     }
